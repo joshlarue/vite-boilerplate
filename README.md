@@ -1,3 +1,3 @@
-# Heritage Park Inventory Frontend
+# Boilerplate Vite Frontend
 
 This frontend runs on Vite + React. To run on your machine, clone this repository, run `npm install`, and then `npm run dev`.
