@@ -1,10 +1,33 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import App from './App.jsx'
-import './index.css'
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import "./index.css";
+import ErrorPage from "./error-page.jsx";
+import Home from "./routes/home.jsx";
+import NormalLayout from "./layouts/normal-layout.jsx";
 
-createRoot(document.getElementById('root')).render(
+const router = createBrowserRouter([
+  // layout used for all protected pages
+  {
+    path: "/",
+    element: <NormalLayout />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        index: true,
+        element: <Home />,
+      },
+      // example route
+      //{
+      //  path: "login",
+      //  element: <Login />,
+      //},
+    ],
+  },
+]);
+
+createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </StrictMode>,
-)
+);
